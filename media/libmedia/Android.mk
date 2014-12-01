@@ -67,6 +67,13 @@ LOCAL_SRC_FILES += SingleStateQueue.cpp
 LOCAL_CFLAGS += -DSINGLE_STATE_QUEUE_INSTANTIATIONS='"SingleStateQueueInstantiations.cpp"'
 # Consider a separate a library for SingleStateQueueInstantiations.
 
+ifeq ($(BOARD_USES_WFD_SERVICE),true)
+LOCAL_SRC_FILES += \
+    IWFDService.cpp \
+    WFDService.cpp \
+    WFDServiceListener.cpp
+endif
+
 LOCAL_SHARED_LIBRARIES := \
 	libui liblog libcutils libutils libbinder libsonivox libicuuc libexpat \
         libcamera_client libstagefright_foundation \
